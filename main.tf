@@ -7,7 +7,7 @@ resource "aws_ecs_cluster" "ecs_cluster" {
     name  = "containerInsights"
     value = "enabled"
   }
-  
+
   tags = var.tags
 
 }
@@ -21,8 +21,8 @@ resource "aws_ecs_cluster_capacity_providers" "ecs_cluster_capacity" {
   capacity_providers = [var.capacity]
 
   default_capacity_provider_strategy {
-    base              = 1
-    weight            = 100
+    base              = var.base
+    weight            = var.weight
     capacity_provider = var.capacity
   }
 

@@ -24,3 +24,15 @@ variable "tags" {
     Environment = "dev"
   }
 }
+
+variable "base" {
+  description = "ECS Cluster Capacity Provider Base"
+  type        = number
+  default     = 1
+}
+
+variable "weight" {
+  description = "ECS Cluster Capacity Provider Weight"
+  type        = number
+  default     = 100
+}
