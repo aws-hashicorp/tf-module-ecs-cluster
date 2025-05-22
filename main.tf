@@ -1,0 +1,30 @@
+# ECS Cluster
+resource "aws_ecs_cluster" "ecs_cluster" {
+
+  name = "ecs-cluster-${var.cluster_name}"
+
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
+  tags = {
+    Manager = "Terraform"
+  }
+
+}
+
+# ECS Cluster Capacity Providers
+resource "aws_ecs_cluster_capacity_providers" "ecs_cluster_capacity" {
+
+  count        = var.create_capacity_providers ? 1 : 0
+  cluster_name = aws_ecs_cluster.ecs_cluster.name
+
+  capacity_providers = [var.capacity]
+
+  default_capacity_provider_strategy {
+    base              = 1
+    weight            = 100
+    capacity_provider = var.capacity
+  }
+
+}
