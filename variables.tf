@@ -15,3 +15,12 @@ variable "capacity" {
   type        = string
   default     = ""
 }
+
+variable "tags" {
+  description = "Tags to assign to the resources"
+  type        = map(string)
+  default = {
+    Manager     = "Terraform"
+    Environment = "dev"
+  }
+}

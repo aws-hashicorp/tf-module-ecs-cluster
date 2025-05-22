@@ -7,9 +7,8 @@ resource "aws_ecs_cluster" "ecs_cluster" {
     name  = "containerInsights"
     value = "enabled"
   }
-  tags = {
-    Manager = "Terraform"
-  }
+  
+  tags = var.tags
 
 }
 
